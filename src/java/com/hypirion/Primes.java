@@ -57,9 +57,27 @@ public final class Primes {
     private static void addPrime(){
         int possiblePrime = primeList.get(primeList.size() - 1);
 
-        do possiblePrime += 2;
+        do possiblePrime += Wheel.get();
         while (!isPrime(possiblePrime));
 
         primeList.add(possiblePrime);
+    }
+
+    private static final class Wheel {
+        static final int[] wheel = {2, 4, 2, 4, 6, 2, 6, 4, 2, 4, 6,
+                                    6, 2, 6, 4, 2, 6, 4, 6, 8, 4, 2,
+                                    4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2,
+                                    6, 6, 4, 2, 4, 6, 2, 6, 4, 2, 4,
+                                    2, 10, 2, 10};
+
+        static int pos = 0;
+
+        private static int get(){
+            int n = wheel[pos];
+            pos++;
+            if (pos == wheel.length)
+                pos = 0;
+            return n;
+        }
     }
 }
