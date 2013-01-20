@@ -1,13 +1,19 @@
 # primes
 
-A Clojure library designed to ... well, that part is up to you.
+Fetch, locate and use prime numbers with this library. There's nothing more to
+it than that.
 
 ## Usage
 
-FIXME
+To use primes within your own Clojure programs and libraries, add this to
+your `project.clj` dependencies:
+
+```clj
+[com.hypirion/primes "0.1.0"] ;; Not out yet
+```
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Jean Niklas L'orange
 
 Distributed under the Eclipse Public License, the same as Clojure.
