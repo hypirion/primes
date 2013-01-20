@@ -2,7 +2,7 @@
   (:import [com.hypirion.primes Primes])
   (:refer-clojure :exclude [take get]))
 
-(defn prime? [n]
+(defn prime? [^long n]
   (Primes/isPrime n))
 
 (defn take [n]
