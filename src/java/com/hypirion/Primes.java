@@ -63,13 +63,13 @@ public final class Primes {
         primeList.add(possiblePrime);
     }
 
-    static final int[] wheel = {2, 4, 2, 4, 6, 2, 6, 4, 2, 4, 6,
-                                6, 2, 6, 4, 2, 6, 4, 6, 8, 4, 2,
-                                4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2,
-                                6, 6, 4, 2, 4, 6, 2, 6, 4, 2, 4,
-                                2, 10, 2, 10};
+    private static final int[] wheel = {2, 4, 2, 4, 6, 2, 6, 4, 2, 4, 6,
+                                        6, 2, 6, 4, 2, 6, 4, 6, 8, 4, 2,
+                                        4, 2, 4, 8, 6, 4, 6, 2, 4, 6, 2,
+                                        6, 6, 4, 2, 4, 6, 2, 6, 4, 2, 4,
+                                        2, 10, 2, 10};
 
-    static int pos = 0;
+    private static int pos = 0;
 
     private static int relativeNext(){
         int n = wheel[pos];
