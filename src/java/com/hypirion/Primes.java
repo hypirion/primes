@@ -78,4 +78,10 @@ public final class Primes {
             pos = 0;
         return n;
     }
+
+    public static void clear(){
+        primeList = new ArrayList<Integer>(Arrays.asList
+                                           (new Integer[]{2, 3, 5, 7, 11}));
+        pos = 0;
+    }
 }
