@@ -1,7 +1,8 @@
 (ns com.hypirion.primes-test
   (:use clojure.test
-        com.hypirion.primes))
+        com.hypirion.pregenerated-primes)
+  (:require [com.hypirion.primes :as p]))
 
-(deftest a-test
-  (testing "FIXME, I fail."
-    (is (= 0 1))))
+(deftest serial-check
+  (doseq [prime hundred-thousand]
+    (is (p/prime? prime))))
