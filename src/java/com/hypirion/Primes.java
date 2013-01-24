@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 
-public final class Primes {
+public final class Primes implements Iterable<Integer>{
     private static ArrayList<Integer> primeList = new ArrayList<Integer>
         (Arrays.asList(new Integer[]{2, 3, 5, 7, 11}));
 
@@ -83,5 +84,42 @@ public final class Primes {
         primeList = new ArrayList<Integer>(Arrays.asList
                                            (new Integer[]{2, 3, 5, 7, 11}));
         pos = 0;
+    }
+
+    private Primes(){}
+    public static final Primes PRIME = new Primes();
+
+    public Iterator<Integer> iterator(){
+        return new PrimeIter();
+    }
+
+    private static class PrimeIter implements Iterator<Integer> {
+        private int pos, atLeast;
+
+        public PrimeIter(){
+            pos = 0;
+            atLeast = primeList.size();
+        }
+
+        @Override
+        public boolean hasNext(){
+            return true;
+        }
+
+        @Override
+        public Integer next(){
+            if (pos < atLeast){
+                return primeList.get(pos++);
+            }
+            addPrime();
+            atLeast = primeList.size();
+            return next();
+        }
+
+        @Override
+        public void remove(){
+            throw new UnsupportedOperationException
+                ("Can't remove primes from a prime list");
+        }
     }
 }
