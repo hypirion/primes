@@ -1,8 +1,11 @@
 (ns com.hypirion.primes-test
-  (:use clojure.test
-        com.hypirion.pregenerated-primes)
-  (:require [com.hypirion.primes :as p])
+  (:use clojure.test)
+  (:require [com.hypirion.primes :as p]
+            [clojure.java.io :as io])
   (:import [com.hypirion.primes Primes]))
+
+(def hundred-thousand
+  (-> "pregen.txt" io/resource slurp read-string))
 
 (deftest serial-prime?-check
   (Primes/clear)
