@@ -10,6 +10,13 @@
     (is (p/prime? prime))))
 
 (deftest serial-take
+  (Primes/clear)
   (doall
    (map #(is (= %1 %2))
         (p/take 100008) hundred-thousand)))
+
+(deftest serial-primes
+  (Primes/clear)
+  (doall
+   (map #(is (= %1 %2))
+        (p/primes) hundred-thousand)))
