@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.concurrent.locks.ReentrantLock;
 
 public final class Primes implements Iterable<Integer>{
-    private static ArrayList<Integer> primeList = new ArrayList<Integer>
-        (Arrays.asList(new Integer[]{2, 3, 5, 7, 11}));
+    private static volatile ArrayList<Integer> primeList =
+        new ArrayList<Integer>(Arrays.asList(new Integer[]{2, 3, 5, 7, 11}));
+
+    private static final ReentrantLock lock = new ReentrantLock();
 
     public static List<Integer> takeUnder(int n){
         createAllUnder(n);
@@ -56,12 +59,18 @@ public final class Primes implements Iterable<Integer>{
     }
 
     private static void addPrime(){
-        int possiblePrime = primeList.get(primeList.size() - 1);
+        lock.lock();
+        try {
+            int possiblePrime = primeList.get(primeList.size() - 1);
 
-        do possiblePrime += relativeNext();
-        while (!isPrime(possiblePrime));
+            do possiblePrime += relativeNext();
+            while (!isPrime(possiblePrime));
 
-        primeList.add(possiblePrime);
+            primeList.add(possiblePrime);
+        }
+        finally {
+            lock.unlock();
+        }
     }
 
     private static final int[] wheel = {2, 4, 2, 4, 6, 2, 6, 4, 2, 4, 6,
