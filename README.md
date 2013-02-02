@@ -9,7 +9,7 @@ To use primes within your own Clojure programs and libraries, add this to
 your `project.clj` dependencies:
 
 ```clj
-[com.hypirion/primes "0.1.0"] ;; Not out yet
+[com.hypirion/primes "0.1.0"]
 ```
 
 ## License
