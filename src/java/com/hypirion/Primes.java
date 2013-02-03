@@ -60,15 +60,20 @@ public final class Primes implements Iterable<Integer>{
     }
 
     private static void addPrime(){
-        lock.lock();
+        boolean gotLock = lock.tryLock();
+        if (!gotLock){
+            lock.lock();
+        }
         try {
-            int possiblePrime = primeList.get(size - 1);
+            if (gotLock){
+                int possiblePrime = primeList.get(size - 1);
 
-            do possiblePrime += relativeNext();
-            while (!isPrime(possiblePrime));
+                do possiblePrime += relativeNext();
+                while (!isPrime(possiblePrime));
 
-            primeList.add(possiblePrime);
-            size++;
+                primeList.add(possiblePrime);
+                size++;
+            }
         }
         finally {
             lock.unlock();
