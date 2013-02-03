@@ -10,6 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public final class Primes implements Iterable<Integer>{
     private static volatile ArrayList<Integer> primeList =
         new ArrayList<Integer>(Arrays.asList(new Integer[]{2, 3, 5, 7, 11}));
+    private static volatile int size = 5;
 
     private static final ReentrantLock lock = new ReentrantLock();
 
@@ -49,24 +50,25 @@ public final class Primes implements Iterable<Integer>{
     }
 
     private static void ensureExists(int n){
-        while (primeList.size() <= n)
+        while (size <= n)
             addPrime();
     }
 
     private static void createAllUnder(int n){
-        while (primeList.get(primeList.size() -1) < n)
+        while (primeList.get(size - 1) < n)
             addPrime();
     }
 
     private static void addPrime(){
         lock.lock();
         try {
-            int possiblePrime = primeList.get(primeList.size() - 1);
+            int possiblePrime = primeList.get(size - 1);
 
             do possiblePrime += relativeNext();
             while (!isPrime(possiblePrime));
 
             primeList.add(possiblePrime);
+            size++;
         }
         finally {
             lock.unlock();
@@ -93,6 +95,7 @@ public final class Primes implements Iterable<Integer>{
         primeList = new ArrayList<Integer>(Arrays.asList
                                            (new Integer[]{2, 3, 5, 7, 11}));
         pos = 0;
+        size = 5;
     }
 
     private Primes(){}
@@ -107,7 +110,7 @@ public final class Primes implements Iterable<Integer>{
 
         public PrimeIter(){
             pos = 0;
-            atLeast = primeList.size();
+            atLeast = size;
         }
 
         @Override
@@ -119,7 +122,7 @@ public final class Primes implements Iterable<Integer>{
         public Integer next(){
             while (atLeast <= pos){
                 addPrime();
-                atLeast = primeList.size();
+                atLeast = size;
             }
             return primeList.get(pos++);
         }
