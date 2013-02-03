@@ -14,12 +14,12 @@
 
 (deftest serial-take
   (Primes/clear)
-  (doall
+  (dorun
    (map #(is (= %1 %2))
         (p/take 100008) hundred-thousand)))
 
 (deftest serial-primes
   (Primes/clear)
-  (doall
+  (dorun
    (map #(is (= %1 %2))
         (p/primes) hundred-thousand)))
