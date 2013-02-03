@@ -49,7 +49,7 @@ public final class Primes implements Iterable<Integer>{
     }
 
     private static void ensureExists(int n){
-        for (int i = primeList.size(); i <= n; i++)
+        while (primeList.size() <= n)
             addPrime();
     }
 
@@ -117,12 +117,11 @@ public final class Primes implements Iterable<Integer>{
 
         @Override
         public Integer next(){
-            if (pos < atLeast){
-                return primeList.get(pos++);
+            while (atLeast <= pos){
+                addPrime();
+                atLeast = primeList.size();
             }
-            addPrime();
-            atLeast = primeList.size();
-            return next();
+            return primeList.get(pos++);
         }
 
         @Override
