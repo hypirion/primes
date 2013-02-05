@@ -1,4 +1,5 @@
 # primes
+[![Build Status](https://travis-ci.org/hyPiRion/primes.png)](https://travis-ci.org/hyPiRion/primes)
 
 Fetch, locate and use prime numbers with this library. There's nothing more to
 it than that.
