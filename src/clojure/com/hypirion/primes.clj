@@ -32,3 +32,8 @@
   "Returns the highest prime below n."
   [n]
   (Primes/lastBelow n))
+
+(defn first-above
+  "Returns the lowest prime above n."
+  [n]
+  (Primes/firstAbove n))
