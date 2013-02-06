@@ -33,6 +33,8 @@ public final class Primes implements Iterable<Integer>{
     }
 
     public static int lastBelow(int v){
+        if (v <= 2)
+            throw new RuntimeException("There are no primes below 2.");
         createAllUnder(v);
         int i = Collections.binarySearch(primeList, v);
         if (i < 0)
