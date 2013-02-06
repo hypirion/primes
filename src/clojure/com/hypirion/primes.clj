@@ -27,3 +27,8 @@
   "Returns all primes below n as an unmodifiable list."
   [n]
   (Primes/takeUnder n))
+
+(defn last-below
+  "Returns the highest prime below n."
+  [n]
+  (Primes/lastBelow n))

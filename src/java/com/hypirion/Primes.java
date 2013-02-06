@@ -32,6 +32,17 @@ public final class Primes implements Iterable<Integer>{
         return primeList.get(n);
     }
 
+    public static int lastBelow(int v){
+        createAllUnder(v);
+        int i = Collections.binarySearch(primeList, v);
+        if (i < 0)
+            i = ~i;
+        int p = primeList.get(i);
+        if (v <= p)
+            p = primeList.get(i-1);
+        return p;
+    }
+
     public static boolean isPrime(long n){
         if (n == 1)
             return false;
