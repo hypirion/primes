@@ -35,14 +35,25 @@ public final class Primes implements Iterable<Integer>{
     public static int lastBelow(int v){
         if (v <= 2)
             throw new RuntimeException("There are no primes below 2.");
-        createAllUnder(v);
-        int i = Collections.binarySearch(primeList, v);
-        if (i < 0)
-            i = ~i;
-        int p = primeList.get(i);
-        if (v <= p)
-            p = primeList.get(i-1);
-        return p;
+        if (v <= primeList.get(size-1)) {
+            int i = Collections.binarySearch(primeList, v);
+            if (i < 0)
+                i = ~i;
+            int p = primeList.get(i);
+            if (v <= p)
+                p = primeList.get(i-1);
+            return p;
+        }
+        else {
+            int from;
+            if ((v & 1) == 1)
+                from = v - 2;
+            else
+                from = v - 1;
+            for (int i = from;; i -= 2)
+                if (isPrime(i))
+                    return i;
+        }
     }
 
     public static int firstAbove(int v){
