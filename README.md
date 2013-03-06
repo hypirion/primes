@@ -17,7 +17,11 @@ your `project.clj` dependencies:
 [com.hypirion/primes "0.1.0"]
 ```
 
-From there, it's really easy to get working with primes:
+From there, it's really easy to get working with primes. Have a look at
+<http://hypirion.github.com/primes/> for the documentation and list of different
+functions.
+
+### Example usage
 
 ```clj
 (require '[com.hypirion.primes :as p])
