@@ -14,12 +14,13 @@ To use primes within your own Clojure programs and libraries, add this to
 your `project.clj` dependencies:
 
 ```clj
-[com.hypirion/primes "0.1.0"]
+[com.hypirion/primes "0.2.0"]
 ```
 
 From there, it's really easy to get working with primes. Have a look at
-<http://hypirion.github.com/primes/> for the documentation and list of different
-functions.
+[the documentation][doc] for a list of different functions.
+
+[doc]: http://hypirion.github.com/primes/0.2.0/com.hypirion.primes.html
 
 ### Example usage
 
