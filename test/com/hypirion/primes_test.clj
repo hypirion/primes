@@ -23,3 +23,9 @@
   (dorun
    (map #(is (= %1 %2))
         (p/primes) hundred-thousand)))
+
+(deftest proper-factorization
+  (Primes/clear)
+  (dotimes [n 100000]
+    (let [factorized (Primes/factorize n)]
+      (is (= n (reduce * factorized))))))
