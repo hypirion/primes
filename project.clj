@@ -9,5 +9,6 @@
 
   :source-paths ["src/clojure"]
   :java-source-paths ["src/java"]
+  :javac-options ["-Xlint:unchecked"]
   :plugins [[codox "0.6.4"]]
   :codox {:output-dir "codox"})
