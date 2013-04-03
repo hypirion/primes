@@ -37,3 +37,8 @@
   "Returns the lowest prime above n."
   [n]
   (Primes/firstAbove n))
+
+(defn factorize
+  "Returns an unmodifiable list of prime factors in n. Will return 1 for n = 1."
+  [n]
+  (Primes/factorize n))

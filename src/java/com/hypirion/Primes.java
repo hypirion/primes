@@ -88,7 +88,7 @@ public final class Primes implements Iterable<Integer>{
         int sqrt = (int) Math.sqrt(n);
         createAllUnder(sqrt+1);
 
-        for (int prime : primeList){
+        for (int prime : primeList) {
             if (sqrt < prime)
                 break;
             else if (n % prime == 0)
@@ -96,6 +96,33 @@ public final class Primes implements Iterable<Integer>{
         }
 
         return true;
+    }
+
+    public static List<Long> factorize(long n) {
+        ArrayList<Long> al = new ArrayList<Long>();
+        if (n == 1) {
+            al.add((long) 1);
+            return Collections.unmodifiableList(al);
+        }
+
+        int sqrt = (int) Math.sqrt(n);
+        createAllUnder(sqrt+1);
+
+        for (int prime : primeList) {
+            if (n == 1 || sqrt < prime)
+                break;
+            else {
+                while (n % prime == 0) {
+                    n /= prime;
+                    al.add((long) prime);
+                }
+            }
+        }
+        if (n != 1) {
+            al.add(n);
+            // This would only happen if the number is prime, right?
+        }
+        return Collections.unmodifiableList(al);
     }
 
     private static void ensureExists(int n){
