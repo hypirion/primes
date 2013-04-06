@@ -86,9 +86,7 @@ public final class Primes implements Iterable<Integer>{
             return false;
 
         int sqrt = (int) Math.sqrt(n);
-        createAllUnder(sqrt+1);
-
-        for (int prime : primeList) {
+        for (int prime : PRIME) {
             if (sqrt < prime)
                 break;
             else if (n % prime == 0)
@@ -106,9 +104,8 @@ public final class Primes implements Iterable<Integer>{
         }
 
         int sqrt = (int) Math.sqrt(n);
-        createAllUnder(sqrt+1);
 
-        for (int prime : primeList) {
+        for (int prime : PRIME) {
             if (n == 1 || sqrt < prime)
                 break;
             else {
