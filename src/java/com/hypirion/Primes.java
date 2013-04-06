@@ -123,11 +123,42 @@ public final class Primes implements Iterable<Integer>{
     }
 
     private static void ensureExists(int n){
-        while (size <= n)
-            addPrime();
+        if (size <= n) {
+            lock.lock();
+            try {
+                int toGenerate = 1 + n - size;
+                int possiblePrime = primeList.get(size - 1);
+                for (int i = 0; i < toGenerate; i++) {
+                    do possiblePrime += relativeNext();
+                    while (!isPrime(possiblePrime));
+
+                    primeList.add(possiblePrime);
+                    size++;
+                }
+            }
+            finally {
+                lock.unlock();
+            }
+        }
     }
 
     private static void createAllUnder(int n){
+        if (primeList.get(size - 1) < n) {
+            lock.lock();
+            try {
+                int possiblePrime = primeList.get(size - 1);
+                while (possiblePrime <= n) {
+                    do possiblePrime += relativeNext();
+                    while (!isPrime(possiblePrime));
+
+                    primeList.add(possiblePrime);
+                    size++;
+                }
+            }
+            finally {
+                lock.unlock();
+            }
+        }
         while (primeList.get(size - 1) < n)
             addPrime();
     }
