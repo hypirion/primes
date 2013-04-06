@@ -14,7 +14,7 @@ To use primes within your own Clojure programs and libraries, add this to
 your `project.clj` dependencies:
 
 ```clj
-[com.hypirion/primes "0.2.0"]
+[com.hypirion/primes "0.2.1"]
 ```
 
 From there, it's really easy to get working with primes. Have a look at
