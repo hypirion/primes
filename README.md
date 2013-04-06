@@ -18,9 +18,9 @@ your `project.clj` dependencies:
 ```
 
 From there, it's really easy to get working with primes. Have a look at
-[the documentation][doc] for a list of different functions.
+[the API][api] for a list of different functions.
 
-[doc]: http://hypirion.github.com/primes/0.2.0/com.hypirion.primes.html
+[api]: http://hypirion.github.com/primes/0.2.0/com.hypirion.primes.html
 
 ### Example usage
 
