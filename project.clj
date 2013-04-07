@@ -1,4 +1,4 @@
-(defproject com.hypirion/primes "0.2.1"
+(defproject com.hypirion/primes "0.3.0-SNAPSHOT"
   :description "Fetch, locate and use prime numbers."
   :url "http://github.com/hyPiRion/primes"
   :license {:name "Eclipse Public License"
