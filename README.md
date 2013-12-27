@@ -4,9 +4,10 @@
 Fetch, locate and use prime numbers with this library. There's nothing more to
 it than that.
 
-The library is designed to rapidly generate primes by being a Clojure-wrapper on
-top of a thread-safe Java class. You don't have to worry about anything, just
-ride the wave and enjoy the view.
+This library is designed to rapidly generate primes by being a Clojure-wrapper
+on top of a thread-safe Java class. You don't have to worry about anything, just
+ride the wave and enjoy the view. The library is stable, updates will thus be
+infrequent.
 
 ## Usage
 
