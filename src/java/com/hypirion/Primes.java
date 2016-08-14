@@ -82,7 +82,7 @@ public final class Primes implements Iterable<Integer>{
     }
 
     public static boolean isPrime(long n){
-        if (n == 1)
+        if (n <= 1)
             return false;
 
         int sqrt = (int) Math.sqrt(n);
